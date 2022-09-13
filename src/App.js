@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { TelegramClient } from "telegram";
-import { signInUserWithQrCode } from "telegram/client/auth";
 import { StringSession } from "telegram/sessions";
-import ab2str from "arraybuffer-to-string";
 
 import "./styles.css";
 const apiId = 123213231;
@@ -21,13 +19,7 @@ const XD = () => {
         },
         qrCode: async (code) => {
           console.log(code);
-          // console.log("Convert the next string to a QR code and scan it");
-          // console.log(code.token.toString("base64url"));
-          var u8 = new Uint8Array([65, 66, 67, 68]);
           console.log(code.token.toString("base64"));
-          const answer = ab2str(code.token, "base64"); // 'SGVsbG
-          console.log(answer);
-
           const urlLink = `tg://login?token=${code.token.toString("base64")}`;
           //convert url link to qr code
           console.log(urlLink);
